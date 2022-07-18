@@ -14,8 +14,19 @@ class Phrase {
             let letter = document.createElement('li');
             let splitPhrase = this.phrase.split('');
             letter.textContent = splitPhrase[i];
-            listOfLetters.appendChild(letter);
+            if (splitPhrase[i] == ' ') {
+                letter.classList.add('space');
+                listOfLetters.appendChild(letter);
+            }
+            else {
+                letter.classList.add('letter');
+                letter.classList.add('hide');
+                letter.classList.add(`${letter.textContent}`);
+                listOfLetters.appendChild(letter);
+            }
         }
     }
 }
 
+let newPhrase = new Phrase('sdlkfdslfkdslfkasd fdgfdgfdgfdgfd');
+newPhrase.addPhraseToDisplay();
