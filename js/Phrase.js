@@ -1,8 +1,13 @@
 /* Treehouse FSJS Techdegree
  * Project 4 - OOP Game App
  * Phrase.js */
+
+
+
+
 // Class That Handles Phrases For The Guessing Phrase Game
 class Phrase {
+    
     constructor(phrase) {
         this.phrase = phrase.toLowerCase();
     }
@@ -26,7 +31,34 @@ class Phrase {
             }
         }
     }
+
+    checkLetter() {
+        let keyBoard = document.getElementById('qwerty');
+        
+        for (let i = 0; i < this.phrase.length; i++) {
+            let splitPhrase = this.phrase.split('');
+            let letter = splitPhrase[i];
+            keyBoard.addEventListener('click', (e) => {
+                if (e.target.textContent == letter) {
+                    console.log(letter);
+                    return letter;
+                }
+            })
+        }
+    }
+
+    showMatchedLetter() {
+        let matchedLetter = this.checkLetter();
+        let matchedElements = document.getElementsByClassName(`${matchedLetter}`);
+        for (let i = 0; i < matchedElements.length; i++) {
+            matchedElements[i].classList.remove('hide');
+            matchedElements[i].classList.add('show');
+        }
+    }
 }
 
 let newPhrase = new Phrase('sdlkfdslfkdslfkasd fdgfdgfdgfdgfd');
 newPhrase.addPhraseToDisplay();
+newPhrase.checkLetter();
+newPhrase.showMatchedLetter();
+
