@@ -45,4 +45,19 @@ class Game {
             return false;
         }
     }
+
+    removeLife() {
+       
+
+        let lives = Array.from(document.querySelectorAll('#scoreboard img'));
+
+        let live = lives.find(live => live.getAttribute('src') === 'images/liveHeart.png');
+        this.missed += 1;
+        live.setAttribute('src', 'images/lostHeart.png');
+
+        if (this.missed >= 5) {
+            console.log('gameover');
+        }
+
+    }
 }
