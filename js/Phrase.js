@@ -57,8 +57,4 @@ class Phrase {
     }
 }
 
-let newPhrase = new Phrase('sdlkfdslfkdslfkasd fdgfdgfdgfdgfd');
-newPhrase.addPhraseToDisplay();
-newPhrase.checkLetter();
-newPhrase.showMatchedLetter();
 
