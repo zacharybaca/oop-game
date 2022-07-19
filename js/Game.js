@@ -28,4 +28,11 @@ class Game {
         let randomPhrase = this.phrases[randomIndex]
         return randomPhrase;
     }
+    // This Method Starts The Game By Hiding The Overlay Element
+    startGame() {
+        let overLay = document.getElementById('overlay');
+        overLay.style.visibility = 'hidden';
+        let randomPhrase = this.getRandomPhrase();
+        this.activePhrase = randomPhrase.phrase;
+    }
 }
