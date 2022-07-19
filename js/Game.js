@@ -56,8 +56,24 @@ class Game {
         live.setAttribute('src', 'images/lostHeart.png');
 
         if (this.missed >= 5) {
-            console.log('gameover');
+            this.gameOver();
         }
 
+    }
+
+    gameOver() {
+        let overlay = document.getElementById('overlay');
+        let gameOverMessage = document.getElementById('game-over-message');
+        overlay.style.display = '';
+
+        if (this.checkForWin()) {
+            gameOverMessage.textContent = 'Congratualations! You Won!';
+            overlay.classList.remove('start');
+            overlay.classList.add('win');
+        } else {
+            gameOverMessage.textContent = 'Sorry, better luck next time!';
+            overlay.classList.remove('start');
+            overlay.classList.add('win');
+        }
     }
 }
