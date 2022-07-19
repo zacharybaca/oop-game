@@ -35,7 +35,7 @@ class Game {
         let correctlyGuessed = [];
 
         for (let i = 0; i < numOfLetters; i++) {
-            if (letters[i].classList.contains('show')) {
+            if (letters[i].classList.contains('show') || letters[i].classList.contains('space')) {
                 correctlyGuessed.push(letters[i]);
             }
         }
