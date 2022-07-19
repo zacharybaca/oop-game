@@ -76,4 +76,26 @@ class Game {
             overlay.classList.add('win');
         }
     }
+
+    handleInteraction(button) {
+        
+
+        if (this.activePhrase.checkLetter(button.innerText)) {
+            button.disabled = true;
+            button.classList.add('chosen');
+            this.activePhrase.showMatchedLetter(button.innerText);
+
+            if (this.checkForWin()) {
+                this.gameOver(true);
+            }
+
+        } else {
+            button.disabled = true;
+            button.classList.add('wrong');
+            this.removeLife();
+        } 
+
+        
+        console.log(button);
+    }
 }
