@@ -12,6 +12,7 @@ class Phrase {
         this.phrase = phrase.toString().toLowerCase();
     }
 
+    //Adds blank li to screen to match length of phrase
     addPhraseToDisplay() {
         
         for (let i = 0; i < this.phrase.length; i++) {

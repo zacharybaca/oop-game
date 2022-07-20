@@ -29,6 +29,7 @@ class Game {
         this.activePhrase.addPhraseToDisplay();
     }
 
+    //Checks to see if user guessed phrase by comparing length of revealed letter array to phrase array
     checkForWin() {
         let numOfLetters = document.querySelectorAll('#phrase li').length;
         let letters = document.querySelectorAll('#phrase li');
@@ -46,9 +47,8 @@ class Game {
         }
     }
 
+    //Replaces heart image with empty heart image if a guess is incorrect
     removeLife() {
-       
-
         let lives = Array.from(document.querySelectorAll('#scoreboard img'));
 
         let live = lives.find(live => live.getAttribute('src') === 'images/liveHeart.png');
@@ -61,6 +61,7 @@ class Game {
 
     }
 
+    //Displays message if user has won or not, and then resets the game
     gameOver() {
         let overlay = document.getElementById('overlay');
         let gameOverMessage = document.getElementById('game-over-message');
@@ -70,13 +71,16 @@ class Game {
             gameOverMessage.textContent = 'Congratualations! You Won!';
             overlay.classList.remove('start');
             overlay.classList.add('win');
+            this.resetGame();
         } else {
             gameOverMessage.textContent = 'Sorry, better luck next time!';
             overlay.classList.remove('start');
             overlay.classList.add('win');
+            this.resetGame();
         }
     }
 
+    //Checks to see if clicked keyboard event target equals letter in active phrase
     handleInteraction(button) {
         
 
@@ -96,6 +100,29 @@ class Game {
         } 
 
         
-        console.log(button);
+    }
+
+    // Resets Game By Removing Class Attributes From All List Items And Resets Missed and Active Phrase to Empty
+    resetGame() {
+        let letters = document.querySelectorAll('#phrase li');
+        let lives = Array.from(document.querySelectorAll('#scoreboard img'));
+        let keys = document.querySelectorAll('#qwerty .key');
+
+        this.missed = 0;
+        this.activePhrase = null;
+
+        for (let letter of letters) {
+            letter.remove();
+        }
+
+        for (let key of keys) {
+            key.classList.remove('chosen', 'wrong');
+            key.removeAttribute('disabled');
+        }
+
+        for (let live of lives) {
+            live.setAttribute('src', 'images/liveHeart.png');
+        }
+
     }
 }
